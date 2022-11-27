@@ -27,7 +27,7 @@ static MANIFEST_DIR: Lazy<PathBuf> =
 	Lazy::new(|| PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").expect("Can't read CARGO_MANIFEST_DIR env var")));
 static SRC_DIR: Lazy<PathBuf> = Lazy::new(|| MANIFEST_DIR.join("src"));
 static SRC_CPP_DIR: Lazy<PathBuf> = Lazy::new(|| MANIFEST_DIR.join("src_cpp"));
-static HOST_TRIPLE: Lazy<Option<String>> = Lazy::new(|| env::var("HOST_TRIPLE").ok());
+static HOST_TRIPLE: Lazy<Option<String>> = Lazy::new(|| env::var("HOST").ok());
 
 static OPENCV_BRANCH_32: Lazy<VersionReq> =
 	Lazy::new(|| VersionReq::parse("~3.2").expect("Can't parse OpenCV 3.2 version requirement"));
