@@ -245,6 +245,7 @@ fn build_clang_generator() -> io::Result<Child> {
 		.env("CARGO_TARGET_DIR", &*OUT_DIR);
 	if let Some(host_triple) = HOST_TRIPLE.as_ref() {
 		cargo.args(&["--target", host_triple]);
+        cargo.env_remove("CARGO_ENCODED_RUSTFLAGS");
 	}
 	println!("running: {:?}", &cargo);
 	cargo.stdout(Stdio::piped());
